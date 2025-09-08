@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart TOC 設定</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- 標題區域 -->
+    <header class="popup-header">
+      <div class="header-content">
+        <h1 class="popup-title">Smart TOC</h1>
+        <span class="version-badge">v1.0.0</span>
+      </div>
+      <p class="popup-subtitle">智能目錄生成器</p>
+    </header>
+
+    <!-- 當前頁面狀態 -->
+    <section class="status-section">
+      <div class="status-item">
+        <span class="status-label">當前頁面：</span>
+        <span class="status-value" id="current-url">載入中...</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">目錄狀態：</span>
+        <span class="status-value" id="toc-status">檢查中...</span>
+      </div>
+    </section>
+
+    <!-- 快速控制 -->
+    <section class="controls-section">
+      <div class="control-group">
+        <label class="toggle-switch">
+          <input type="checkbox" id="enable-toggle">
+          <span class="toggle-slider"></span>
+          <span class="toggle-label">啟用 Smart TOC</span>
+        </label>
+      </div>
+      
+      <div class="control-group">
+        <button class="btn btn-primary" id="refresh-btn">
+          <span class="btn-icon">🔄</span>
+          重新生成目錄
+        </button>
+      </div>
+    </section>
+
+    <!-- 設定區域 -->
+    <section class="settings-section">
+      <h3 class="section-title">設定</h3>
+      
+      <div class="setting-item">
+        <label for="min-headings">最少標題數量</label>
+        <div class="input-group">
+          <input type="number" id="min-headings" min="1" max="10" value="3">
+          <span class="input-suffix">個</span>
+        </div>
+      </div>
+      
+      <div class="setting-item">
+        <label for="min-text-length">最少文字長度</label>
+        <div class="input-group">
+          <input type="number" id="min-text-length" min="500" max="5000" step="100" value="1000">
+          <span class="input-suffix">字元</span>
+        </div>
+      </div>
+      
+      <div class="setting-item">
+        <label for="theme-select">主題外觀</label>
+        <select id="theme-select" class="select-input">
+          <option value="auto">自動</option>
+          <option value="light">淺色</option>
+          <option value="dark">深色</option>
+        </select>
+      </div>
+      
+      <div class="setting-item">
+        <label for="position-select">預設位置</label>
+        <select id="position-select" class="select-input">
+          <option value="smart">智能定位</option>
+          <option value="right">右側固定</option>
+          <option value="left">左側固定</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- 統計資訊 -->
+    <section class="stats-section">
+      <h3 class="section-title">統計</h3>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-number" id="headings-count">-</span>
+          <span class="stat-label">標題數量</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" id="text-length">-</span>
+          <span class="stat-label">文字長度</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 底部動作 -->
+    <footer class="popup-footer">
+      <div class="footer-actions">
+        <button class="btn btn-secondary" id="reset-btn">重置設定</button>
+        <button class="btn btn-primary" id="save-btn">儲存</button>
+      </div>
+      <div class="footer-links">
+        <a href="#" id="help-link">說明</a>
+        <a href="#" id="feedback-link">意見回饋</a>
+      </div>
+    </footer>
+
+    <!-- 載入指示器 -->
+    <div class="loading-overlay" id="loading-overlay">
+      <div class="loading-spinner"></div>
+      <span class="loading-text">處理中...</span>
+    </div>
+
+    <!-- 通知訊息 -->
+    <div class="notification" id="notification">
+      <span class="notification-text"></span>
+      <button class="notification-close">&times;</button>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
