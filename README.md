@@ -1,5 +1,3 @@
-# smart-toc-extension
-
 # Smart TOC - 智能目錄生成器
 
 ## Smart TOC 是什麼?
